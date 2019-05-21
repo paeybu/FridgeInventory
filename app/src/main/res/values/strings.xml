@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FridgeInventory</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_quantity">Quantity</string>
+    
+    <string name="unit_pcs">Pieces</string>
+    <string name="unit_bottles">Bottles</string>
+    <string name="unit_kg">Kilograms</string>
+    <string name="unit_liter">Liters</string>
+</resources>
