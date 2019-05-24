@@ -76,6 +76,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         //New item
         if (mCurrentUri == null) {
             if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString)) {
+                Toast.makeText(getApplicationContext(), "You must input name and quantity", Toast.LENGTH_LONG).show();
                 return;
             }
         }
