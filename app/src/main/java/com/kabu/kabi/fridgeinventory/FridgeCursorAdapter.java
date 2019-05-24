@@ -64,31 +64,6 @@ public class FridgeCursorAdapter extends CursorAdapter {
 
         nameTextView.setText(name);
         summaryTextView.setText(quantity + " " + stringUnit);
-
-        Button mDeleteBtn = view.findViewById(R.id.deleteBtn);
-        mDeleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.
-                        setTitle("Are you sure you want to delete this item?").
-                        setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String[] selectionArgs = new String[] { String.valueOf(currentId) };
-                                context.getContentResolver().delete(FridgeContract.FridgeEntry.CONTENT_URI, FridgeContract.FridgeEntry._ID + "=?", selectionArgs);
-                                Toast.makeText(context, "Delete row " + currentId, Toast.LENGTH_LONG).show();
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                return;
-                            }
-                        }).
-                        create().show();
-            }
-        });
     }
 
 }

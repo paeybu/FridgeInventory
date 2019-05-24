@@ -3,6 +3,7 @@ package com.kabu.kabi.fridgeinventory;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
@@ -31,12 +32,14 @@ import com.kabu.kabi.fridgeinventory.data.FridgeDbHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private TextView tv;
     private ListView mListView;
 
     private static final int FRIDGE_LOADER = 0;
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     FridgeCursorAdapter mFridgeCursorAdapter;
 
     @Override
@@ -63,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+                Uri currentUri = ContentUris.withAppendedId(FridgeContract.FridgeEntry.CONTENT_URI, id);
+                i.setData(currentUri);
                 startActivity(i);
             }
         });

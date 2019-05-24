@@ -7,4 +7,6 @@
     <string name="unit_bottles">Bottles</string>
     <string name="unit_kg">Kilograms</string>
     <string name="unit_liter">Liters</string>
+    <string name="editor_activity_title_new_item">New Item</string>
+    <string name="editor_activity_title_edit_item">Edit Item</string>
 </resources>

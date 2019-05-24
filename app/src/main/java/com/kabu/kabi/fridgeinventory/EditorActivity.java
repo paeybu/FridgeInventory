@@ -1,6 +1,7 @@
 package com.kabu.kabi.fridgeinventory;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,15 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+
+        Intent i = getIntent();
+        Uri currentUri = i.getData();
+
+        if(currentUri == null) {
+            setTitle(getString(R.string.editor_activity_title_new_item));
+        } else {
+            setTitle(getString(R.string.editor_activity_title_edit_item));
+        }
 
         mButton = findViewById(R.id.submitBtn);
         mNameEt = findViewById(R.id.nameEt);
