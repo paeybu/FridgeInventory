@@ -45,7 +45,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mCurrentUri = i.getData();
 
         //New Item
-        if (mCurrentUri == null) {
+        if (isNewItem()) {
             setTitle(getString(R.string.editor_activity_title_new_item));
             invalidateOptionsMenu();
             // Edit Item
@@ -74,7 +74,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String quantityString = mQuantityEt.getText().toString().trim();
 
         //New item
-        if (mCurrentUri == null) {
+        if (isNewItem()) {
             if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString)) {
                 Toast.makeText(getApplicationContext(), "You must input name and quantity", Toast.LENGTH_LONG).show();
                 return;
@@ -87,7 +87,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(FridgeContract.FridgeEntry.COLUMN_ITEM_UNIT, mUnit);
 
         //New
-        if (mCurrentUri == null) {
+        if (isNewItem()) {
             Uri insertUri = getContentResolver().insert(FridgeContract.FridgeEntry.CONTENT_URI, values);
 
             if(insertUri == null) {
@@ -142,9 +142,22 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         });
     }
 
+    private boolean isNewItem() {
+        return mCurrentUri == null;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.editor_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (isNewItem()) {
+            MenuItem menuItem = menu.findItem(R.id.action_delete_item);
+            menuItem.setVisible(false);
+        }
         return true;
     }
 
