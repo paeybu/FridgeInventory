@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -58,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         mFridgeCursorAdapter = new FridgeCursorAdapter(this, cursor);
         mListView.setAdapter(mFridgeCursorAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getApplicationContext(), EditorActivity.class);
+                startActivity(i);
+            }
+        });
 
         getLoaderManager().initLoader(FRIDGE_LOADER, null, this);
 
