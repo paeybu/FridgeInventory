@@ -88,9 +88,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_add_dummy:
-                addDummy();
-                break;
             case R.id.action_delete_all:
                 deleteAll();
                 break;
@@ -118,14 +115,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 create().show();
     }
 
-    private void addDummy() {
-
-        ContentValues values = new ContentValues();
-        values.put(FridgeContract.FridgeEntry.COLUMN_ITEM_NAME, "Milk");
-        values.put(FridgeContract.FridgeEntry.COLUMN_ITEM_QUANTITY, 1);
-        values.put(FridgeContract.FridgeEntry.COLUMN_ITEM_UNIT, FridgeContract.FridgeEntry.UNIT_BOTTLES);
-        Uri uri = getContentResolver().insert(FridgeContract.FridgeEntry.CONTENT_URI, values);
-    }
 
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
