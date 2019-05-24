@@ -223,7 +223,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             switch (unit) {
                 case FridgeContract.FridgeEntry.UNIT_PIECES:
-                    mSpinner.setSelection(FridgeContract.FridgeEntry.UNIT_BOTTLES);
+                    mSpinner.setSelection(FridgeContract.FridgeEntry.UNIT_PIECES);
                     break;
                 case FridgeContract.FridgeEntry.UNIT_BOTTLES:
                     mSpinner.setSelection(FridgeContract.FridgeEntry.UNIT_BOTTLES);
